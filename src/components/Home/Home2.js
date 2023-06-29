@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import devops from "../../Assets/devops.png";
 import figma from "../../Assets/figma.png";
@@ -9,44 +9,42 @@ import { annotate } from 'rough-notation';
 
 
 function Home2() {
-    const textRef = [
-    useRef(null), // Reference to the wave element
-    useRef(null),
-    useRef(null),
-    useRef(null),
-   
-  ];
-  useEffect(() => {
-    const annotations = [
-      annotate(textRef[0].current, { type: 'box', 
-      strokeWidth: 3,
-      padding: [5, 10], }),
-      annotate(textRef[1].current, { type: 'box', 
-      strokeWidth: 2,
-      padding: [5, 10], }),
-      annotate(textRef[2].current, { type: 'box',  
-      strokeWidth: 2,
-      padding: [5, 10], }),
-      annotate(textRef[3].current, { type: 'box',  
-      strokeWidth: 2,
-      padding: [5, 10], }),
-    ];
+  const textRef1 = useRef(null);
+  const textRef2 = useRef(null);
+  const textRef3 = useRef(null);
+  const textRef4 = useRef(null);
   
-    annotations.forEach((annotation) => annotation.show());
+  const textRefs = useMemo(() => [textRef1, textRef2, textRef3, textRef4], []);
+
+  const [annotations, setAnnotations] = useState([]);
+
+    useEffect(() => {
+      const newAnnotations = [
+        annotate(textRefs[0].current, { type: 'box', strokeWidth: 3, padding: [5, 10] }),
+        annotate(textRefs[1].current, { type: 'box', strokeWidth: 2,  padding: [5, 10] }),
+        annotate(textRefs[2].current, { type: 'box', strokeWidth:2, padding: [5, 10] }),
+        annotate(textRefs[3].current, { type: 'box', strokeWidth: 2, padding: [5, 10] }),
+      ];
   
-    return () => {
-      annotations.forEach((annotation) => annotation.remove());
-    };
-  }, [textRef]);
+      setAnnotations(newAnnotations);
   
-  return (
+      return () => {
+        newAnnotations.forEach((annotation) => annotation.remove());
+      };
+    }, [textRefs]);
+  
+    useEffect(() => {
+      annotations.forEach((annotation) => annotation.show());
+    }, [annotations]);
+  
+    return (
     <Container fluid className="home-about-section" id="about">
      
       <Row style={{ justifyContent: "center", paddingBottom: "50px", textAlign: "center", gap: "100px" }}>
-      <h2><strong><span ref={textRef[0]}>SKILLS</span></strong></h2>
+      <h2><strong><span ref={textRefs[0]}>SKILLS</span></strong></h2>
       <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
         <img src={figma} alt="figma" style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
-         <h5><strong><span  ref={textRef[1]}>UI/UX</span></strong></h5>
+         <h5><strong><span  ref={textRefs[1]}>UI/UX</span></strong></h5>
     <p><h6 style={{textAlign:"left"}}>
 👨🏽‍🎨 Experience in  Conducting research to understand user needs, behaviors, and preferences to inform design decisions.
 <br></br>
@@ -62,7 +60,7 @@ function Home2() {
   </Col>
       <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
         <img src={dev} alt="dev" style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
-     <h5><strong><span ref={textRef[2]} >Frontend Developer</span></strong></h5>
+     <h5><strong><span ref={textRefs[2]} >Frontend Developer</span></strong></h5>
     <p><h6 style={{textAlign:"left"}}>
   🕵️‍♂️ Experience in HTML (Hypertext Markup Language) to structure the content and layout of web pages, utilizing semantic elements for better accessibility and SEO.
 <br></br>
@@ -78,7 +76,7 @@ function Home2() {
    </Col>
    <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
         <img src={devops} alt="devops" style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
-     <h5><strong><span ref={textRef[3]}>Devops</span></strong></h5>
+     <h5><strong><span ref={textRefs[3]}>Devops</span></strong></h5>
     <p><h6 style={{textAlign:"left"}}>
 👨🏽‍💻 Experience in  working with multiple cloud platforms, including AWS, Azure, and Google Cloud. I am familiar with provisioning and managing cloud resources, deploying applications, and utilizing various cloud services.
 <br></br>

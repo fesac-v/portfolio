@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import {
   SiTailwindcss,
@@ -49,29 +49,31 @@ function Home4() {
 
 
 
-  const textRef = [
-    useRef(null),  
-  ];
-  useEffect(() => {
-    const annotations = [
-      annotate(textRef[0].current, { type: 'box', 
-      strokeWidth: 3,
-      padding: [5, 10],
-       }),
-      ];
+  const textRef1 = useRef(null);
+  const textRefs = useMemo(() => [textRef1], []);
+  const [annotations, setAnnotations] = useState([]);
 
-      annotations.forEach((annotation) => annotation.show());
-    
-      return () => {
-        annotations.forEach((annotation) => annotation.remove());
-      };
-    }, [textRef]);
+  useEffect(() => {
+    const newAnnotations = [
+      annotate(textRefs[0].current, { type: 'box', strokeWidth: 3, padding: [5, 10] }),
+    ];
+
+    setAnnotations(newAnnotations);
+
+    return () => {
+      newAnnotations.forEach((annotation) => annotation.remove());
+    };
+  }, [textRefs]);
+
+  useEffect(() => {
+    annotations.forEach((annotation) => annotation.show());
+  }, [annotations]);
 
   return (
     
    
     <Row style={{ justifyContent: "center", paddingBottom: "50px", textAlign: "center",}}>
-    <h2><strong><span ref={textRef[0]}>TECHNOLOGY</span></strong></h2>
+    <h2><strong><span ref={textRefs[0]}>TECHNOLOGY</span></strong></h2>
 	
 
 
