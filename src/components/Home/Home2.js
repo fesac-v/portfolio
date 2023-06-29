@@ -1,114 +1,97 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
-import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
+import devops from "../Home/devops.png";
+import figma from "../Home/figma.png";
+import dev from "../Home/software.png"; 
+import { annotate } from 'rough-notation';
+
+
+
 
 function Home2() {
+    const textRef = [
+    useRef(null), // Reference to the wave element
+    useRef(null),
+    useRef(null),
+    useRef(null),
+   
+  ];
+  useEffect(() => {
+    const annotations = [
+      annotate(textRef[0].current, { type: 'box', 
+      strokeWidth: 3,
+      padding: [5, 10], }),
+      annotate(textRef[1].current, { type: 'box', 
+      strokeWidth: 2,
+      padding: [5, 10], }),
+      annotate(textRef[2].current, { type: 'box',  
+      strokeWidth: 2,
+      padding: [5, 10], }),
+      annotate(textRef[3].current, { type: 'box',  
+      strokeWidth: 2,
+      padding: [5, 10], }),
+    ];
+  
+    annotations.forEach((annotation) => annotation.show());
+  
+    return () => {
+      annotations.forEach((annotation) => annotation.remove());
+    };
+  }, []);
+  
   return (
     <Container fluid className="home-about-section" id="about">
-      <Container>
-        <Row>
-          <Col md={8} className="home-about-description">
-            <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
-            </h1>
-            <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
-              <br />
-              <br />I am fluent in classics like
-              <i>
-                <b className="purple"> C++, Javascript and Go. </b>
-              </i>
-              <br />
-              <br />
-              My field of Interest's are building new &nbsp;
-              <i>
-                <b className="purple">Web Technologies and Products </b> and
-                also in areas related to{" "}
-                <b className="purple">
-                  Blockchain.
-                </b>
-              </i>
-              <br />
-              <br />
-              Whenever possible, I also apply my passion for developing products
-              with <b className="purple">Node.js</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i>
-            </p>
-          </Col>
-          <Col md={4} className="myAvtar">
-            <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
-            </Tilt>
-          </Col>
+     
+      <Row style={{ justifyContent: "center", paddingBottom: "50px", textAlign: "center", gap: "100px" }}>
+      <h2><strong><span ref={textRef[0]}>SKILLS</span></strong></h2>
+      <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <img src={figma} style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
+         <h5><strong><span  ref={textRef[1]}>UI/UX</span></strong></h5>
+    <p><h6 style={{textAlign:"left"}}>
+👨🏽‍🎨 Experience in  Conducting research to understand user needs, behaviors, and preferences to inform design decisions.
+<br></br>
+<br></br>
+🐼 Experience in Designing interactive elements and animations to provide feedback, guide users, and create engaging experiences.
+<br></br>
+<br></br>
+👥 Experience in Working closely with developers, stakeholders, and other team members to ensure the design vision is effectively implemented.
+<br></br>
+<br></br>
+🎨 Experience in Developing visually appealing designs by selecting appropriate color schemes, typography, icons, and imagery that align with the brand identity and enhance the user experience.
+</h6></p>
+  </Col>
+      <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <img src={dev} style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
+     <h5><strong><span ref={textRef[2]} >Frontend Developer</span></strong></h5>
+    <p><h6 style={{textAlign:"left"}}>
+  🕵️‍♂️ Experience in HTML (Hypertext Markup Language) to structure the content and layout of web pages, utilizing semantic elements for better accessibility and SEO.
+<br></br>
+<br></br>
+🏂 Experience in CSS (Cascading Style Sheets) for styling and visually enhancing the UI, including CSS frameworks like Bootstrap or Tailwind CSS.
+<br></br>
+<br></br>
+🏜 Experience in JavaScript programming language for implementing interactivity and dynamic functionality on the front end, utilizing libraries or frameworks like React, Angular, or Vue.js.
+<br></br>
+<br></br>
+📱 Experience in creating responsive and mobile-friendly designs that adapt to different screen sizes and devices, using CSS media queries and responsive frameworks.
+</h6></p>
+   </Col>
+   <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <img src={devops} style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
+     <h5><strong><span ref={textRef[3]}>Devops</span></strong></h5>
+    <p><h6 style={{textAlign:"left"}}>
+👨🏽‍💻 Experience in  working with multiple cloud platforms, including AWS, Azure, and Google Cloud. I am familiar with provisioning and managing cloud resources, deploying applications, and utilizing various cloud services.
+<br></br>
+<br></br>
+⛈️ Experience in hosting and managing websites, including configuring web servers, managing domains and DNS settings, implementing SSL certificates, and ensuring website performance and security.
+<br></br>
+<br></br>
+🪈 Experience in setting up and maintaining Continuous Integration (CI) pipelines. This involves automating the build, test, and deployment processes, integrating version control systems like Git, and utilizing tools such as Jenkins, GitLab CI/CD, or Azure DevOps to ensure a streamlined and efficient development workflow.
+</h6></p>
+   </Col>
+   
+  
         </Row>
-        <Row>
-          <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
-            <p>
-              Feel free to <span className="purple">connect </span>with me
-            </p>
-            <ul className="home-about-social-links">
-              <li className="social-icons">
-                <a
-                  href="https://github.com/soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://twitter.com/Soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/soumyajit4419/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.instagram.com/soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                >
-                  <AiFillInstagram />
-                </a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </Container>
     </Container>
   );
 }
