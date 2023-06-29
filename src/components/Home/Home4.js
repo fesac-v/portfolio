@@ -65,7 +65,7 @@ function Home4() {
       return () => {
         annotations.forEach((annotation) => annotation.remove());
       };
-    }, []);
+    }, [textRef]);
 
   return (
     

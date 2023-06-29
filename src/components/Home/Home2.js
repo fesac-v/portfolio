@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import devops from "../Home/devops.png";
-import figma from "../Home/figma.png";
-import dev from "../Home/software.png"; 
+import devops from "../../Assets/devops.png";
+import figma from "../../Assets/figma.png";
+import dev from "../../Assets/software.png";
 import { annotate } from 'rough-notation';
 
 
@@ -37,7 +37,7 @@ function Home2() {
     return () => {
       annotations.forEach((annotation) => annotation.remove());
     };
-  }, []);
+  }, [textRef]);
   
   return (
     <Container fluid className="home-about-section" id="about">
@@ -45,7 +45,7 @@ function Home2() {
       <Row style={{ justifyContent: "center", paddingBottom: "50px", textAlign: "center", gap: "100px" }}>
       <h2><strong><span ref={textRef[0]}>SKILLS</span></strong></h2>
       <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <img src={figma} style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
+        <img src={figma} alt="figma" style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
          <h5><strong><span  ref={textRef[1]}>UI/UX</span></strong></h5>
     <p><h6 style={{textAlign:"left"}}>
 👨🏽‍🎨 Experience in  Conducting research to understand user needs, behaviors, and preferences to inform design decisions.
@@ -61,7 +61,7 @@ function Home2() {
 </h6></p>
   </Col>
       <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <img src={dev} style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
+        <img src={dev} alt="dev" style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
      <h5><strong><span ref={textRef[2]} >Frontend Developer</span></strong></h5>
     <p><h6 style={{textAlign:"left"}}>
   🕵️‍♂️ Experience in HTML (Hypertext Markup Language) to structure the content and layout of web pages, utilizing semantic elements for better accessibility and SEO.
@@ -77,7 +77,7 @@ function Home2() {
 </h6></p>
    </Col>
    <Col xs={4} md={2} className="tech-icons" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <img src={devops} style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
+        <img src={devops} alt="devops" style={{ width: "100%", height: "auto", display: "flex", justifyContent: "center", alignItems: "center",}}></img>
      <h5><strong><span ref={textRef[3]}>Devops</span></strong></h5>
     <p><h6 style={{textAlign:"left"}}>
 👨🏽‍💻 Experience in  working with multiple cloud platforms, including AWS, Azure, and Google Cloud. I am familiar with provisioning and managing cloud resources, deploying applications, and utilizing various cloud services.

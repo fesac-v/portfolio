@@ -40,7 +40,7 @@ useEffect(() => {
   return () => {
     annotations.forEach((annotation) => annotation.remove());
   };
-}, []);
+}, [textRef]);
 
   return (
     <section>
@@ -89,7 +89,7 @@ useEffect(() => {
                <br>
                </br>
               
-              <a class="hire-button" href="">Hire Me
+              <a class="hire-button" >Hire Me
               </a> 
               </Col>
            
