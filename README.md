@@ -5,7 +5,7 @@
 <div align="center">
   <img alt="Demo" src="./Images/readme-img1.png" />
   <div>
-  <img alt="mobile" src="./Images/readme-img2.png" />
+  <img alt="mobile" src="./Images/readme-img2.png" width="50%" height="500px"/>
   </div>
 </div>
 
