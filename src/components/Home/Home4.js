@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
-import { Col, Row, Form, Button } from "react-bootstrap";
+import { Col, Row, } from "react-bootstrap";
 import {
   SiTailwindcss,
   SiCsswizardry,
@@ -30,33 +30,18 @@ import {IoLogoHtml5} from "react-icons/io"
 import { annotate } from 'rough-notation';
 
 function Home4() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Perform actions with the form data (e.g., send a message)
-    // You can use AJAX requests, form submission to a server, or any other desired action
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Message:", message);
-    // Reset the form fields
-    setName("");
-    setEmail("");
-    setMessage("");
-  };
-
 
 
   const textRef1 = useRef(null);
+  
+
   const textRefs = useMemo(() => [textRef1], []);
   const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     const newAnnotations = [
       annotate(textRefs[0].current, { type: 'box', strokeWidth: 3, padding: [5, 10] }),
-    ];
+     ];
 
     setAnnotations(newAnnotations);
 
@@ -158,45 +143,14 @@ function Home4() {
 
       <Row style={{justifyContent: "center", paddingBottom: "50px", textAlign: "center",}}>
       <Col md={6}>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-  <h1>Contact Me</h1>
-  <p>Send me a message</p>
-  <Form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "0 auto" }}>
-    <Form.Group controlId="formName">
-      <Form.Label>Your Name</Form.Label>
-      <Form.Control
-        type="text"
-        placeholder="Enter your name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-    </Form.Group>
-    <Form.Group controlId="formEmail">
-      <Form.Label>Your Email</Form.Label>
-      <Form.Control
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-    </Form.Group>
-    <Form.Group controlId="formMessage">
-      <Form.Label>Your Message</Form.Label>
-      <Form.Control
-        as="textarea"
-        rows={4}
-        placeholder="Enter your message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-    </Form.Group>
-    <Button variant="primary" type="submit">
-      Send Message
-    </Button>
-  </Form>
+        <br></br>
+        <br></br>
+<h1 style={{textAlign:"left"}}><b>Let's make something amazing together.</b></h1>
+<br>
+</br>
+<br>
+</br>
+<h1 style={{textAlign:"left"}}><b>start by &nbsp;<a href="mailto:victorokiki81@gmail.com" style={{color: "black", textDecorationLine:"line-through"}}>saying hi</a></b></h1>
 </Col>
         </Row>
     </Row>
