@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 
 
-import emotion from "../../Assets/Projects/emotion.png";
 import signup from "../../Assets/Projects/signup.png";
 import house from "../../Assets/Projects/fesac.png";
 import fesac from "../../Assets/Projects/fesactours.png";
