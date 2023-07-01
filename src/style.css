@@ -629,13 +629,13 @@ button:focus {
 
 
 .hire-button:hover {
-  background-color: #000000;
+  background-color: #7965FF;
 }
 .hire-button:hover {
   background-color: #7965FF;
 }
 .hire-button:active {
-  background-color: blue;
+  background-color: #7965FF;
 }
 
 

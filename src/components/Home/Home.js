@@ -72,7 +72,7 @@ function Home() {
 
               <br></br>
               
-              <a className="hire-button" href="https://www.fesaccharityfoundation.org">Hire Me</a>
+              <a className="hire-button" href="mailto:victorokiki81@gmail.com">Hire Me</a>
             </Col>
            
 
